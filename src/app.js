@@ -27,10 +27,18 @@ const NotFoundPage = () => (
 const Header = () => (
   <header>
     <h1>Expensify</h1>
-    <Link to='/'>Go Home</Link>
-    <Link to='/edit'>Go to edit page</Link>
-    <Link to='/create'>Go to create page</Link>
-    <Link to='/help'>Go to help page</Link>
+    <NavLink to='/' activeClassName='is-active' exact={true}>
+      Go Home
+    </NavLink>
+    <NavLink to='/edit' activeClassName='is-active'>
+      Edit expense
+    </NavLink>
+    <NavLink to='/create' activeClassName='is-active'>
+      Create expense
+    </NavLink>
+    <NavLink to='/help' activeClassName='is-active'>
+      Help
+    </NavLink>
   </header>
 );
 

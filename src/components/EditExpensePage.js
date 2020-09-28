@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-const EditExpensePage = () => (
-  <div>This is from my EditExpensePage component</div>
-);
+const EditExpensePage = (props) => {
+  return <div>Editing the expense with id {props.match.params.id}</div>;
+};
 export default EditExpensePage;

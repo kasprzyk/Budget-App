@@ -1,5 +1,12 @@
 import { createStore } from 'redux';
 
+//action generator
+const incrementCount = () => {
+  return {
+    type: 'INCREMENT',
+  };
+};
+
 const store = createStore((state = { count: 0 }, action) => {
   switch (action.type) {
     case 'INCREMENT':
@@ -36,6 +43,8 @@ store.dispatch({
   type: 'INCREMENT',
   incrementBy: 5,
 });
+
+store.dispatch(incrementCount());
 
 store.dispatch({
   type: 'DECREMENT',

@@ -13,8 +13,25 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-firebase.database().ref().set({
+
+const database = firebase.database();
+
+database.ref().set({
   name: 'Piotr Kasprzycki',
+  age: 32,
+  location: {
+    city: 'Iława',
+    country: 'Poland',
+  },
+});
+
+//database.ref().set('This is my data');
+
+database.ref('age').set(27);
+database.ref('location/city').set('Detroit');
+database.ref('attributes').set({
+  height: 73,
+  weight: 100,
 });
 
 // <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>

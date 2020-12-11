@@ -33,6 +33,7 @@ database.ref('attributes').set({
   height: 73,
   weight: 100,
 });
+console.log('Request to change the data.');
 
 // <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
 

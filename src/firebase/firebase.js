@@ -33,18 +33,34 @@ database
     console.log('error: ', e);
   });
 
-//database.ref().set('This is my data');
+// database
+//   .ref('attributes')
+//   .set({
+//     height: 73,
+//     weight: 100,
+//   })
+//   .then(() => {
+//     console.log('call worked');
+//   })
+//   .catch((e) => {
+//     console.log('error', e);
+//   });
 
-// database.ref('age').set(27);
-// database.ref('location/city').set('Detroit');
+// database
+//   .ref('age')
+//   .remove()
+//   .then(() => {
+//     console.log('removed sucessfully');
+//   })
+//   .catch((e) => {
+//     console.log('error', e);
+//   });
+
 database
-  .ref('attributes')
-  .set({
-    height: 73,
-    weight: 100,
-  })
+  .ref('age')
+  .set(null)
   .then(() => {
-    console.log('call worked');
+    console.log('Property is now == null');
   })
   .catch((e) => {
     console.log('error', e);

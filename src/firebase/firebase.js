@@ -21,6 +21,10 @@ database
   .set({
     name: 'Piotr Kasprzycki',
     age: 32,
+    job: {
+      title: 'software dev',
+      company: 'ibpm',
+    },
     location: {
       city: 'Iława',
       country: 'Poland',
@@ -28,6 +32,20 @@ database
   })
   .then(() => {
     console.log('data is saved');
+  })
+  .catch((e) => {
+    console.log('error: ', e);
+  });
+
+database
+  .ref()
+  .update({
+    name: 'Stefan',
+    age: 30,
+    'location/city': 'Boston',
+  })
+  .then(() => {
+    console.log('data is updated');
   })
   .catch((e) => {
     console.log('error: ', e);
@@ -56,12 +74,12 @@ database
 //     console.log('error', e);
 //   });
 
-database
-  .ref('age')
-  .set(null)
-  .then(() => {
-    console.log('Property is now == null');
-  })
-  .catch((e) => {
-    console.log('error', e);
-  });
+// database
+//   .ref('age')
+//   .set(null)
+//   .then(() => {
+//     console.log('Property is now == null');
+//   })
+//   .catch((e) => {
+//     console.log('error', e);
+//   });

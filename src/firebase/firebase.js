@@ -16,40 +16,84 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database
-  .ref()
-  .set({
-    name: 'Piotr Kasprzycki',
-    age: 32,
-    job: {
-      title: 'software dev',
-      company: 'ibpm',
-    },
-    location: {
-      city: 'Iława',
-      country: 'Poland',
-    },
-  })
-  .then(() => {
-    console.log('data is saved');
-  })
-  .catch((e) => {
-    console.log('error: ', e);
-  });
+database.ref().on(
+  'value',
+  (snapshot) => {
+    const val = snapshot.val();
+    console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
+  },
+  (e) => {
+    console.log('error while fetching', e);
+  }
+);
 
-database
-  .ref()
-  .update({
-    name: 'Stefan',
-    age: 30,
-    'location/city': 'Boston',
-  })
-  .then(() => {
-    console.log('data is updated');
-  })
-  .catch((e) => {
-    console.log('error: ', e);
-  });
+// database
+//   .ref()
+//   .once('value')
+//   .then((snapshot) => {
+//     const val = snapshot.val();
+//     console.log(val);
+//   })
+//   .catch((e) => {
+//     console.log('error: ', e);
+//   });
+
+// const onValueChange = database.ref().on(
+//   'value',
+//   (snapshot) => {
+//     console.log(snapshot.val());
+//   },
+//   (e) => {
+//     console.log('error with data fetching', e);
+//   }
+// );
+
+// setTimeout(() => {
+//   database.ref('age').set(24);
+// }, 3500);
+
+// setTimeout(() => {
+//   database.ref().off(onValueChange);
+// }, 4500);
+
+// setTimeout(() => {
+//   database.ref('age').set(27);
+// }, 5500);
+
+// database
+//   .ref()
+//   .set({
+//     name: 'Piotr Kasprzycki',
+//     age: 32,
+//     job: {
+//       title: 'software dev',
+//       company: 'ibpm',
+//     },
+//     location: {
+//       city: 'Iława',
+//       country: 'Poland',
+//     },
+//   })
+//   .then(() => {
+//     console.log('data is saved');
+//   })
+//   .catch((e) => {
+//     console.log('error: ', e);
+//   });
+
+// database
+//   .ref()
+//   .update({
+//     name: 'Stefan',
+//     age: 30,
+//     'location/city': 'Boston',
+//   })
+//   .then(() => {
+//     console.log('data is updated');
+//   })
+//   .catch((e) => {
+//     console.log('error: ', e);
+//   });
 
 // database
 //   .ref('attributes')

@@ -16,12 +16,41 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref('expenses').push({
-  description: 'Rent',
-  note: '',
-  amount: 109500,
-  createdAt: 976123498763,
-});
+// database.ref('expenses').push({
+//   description: 'Rent',
+//   note: '',
+//   amount: 109500,
+//   createdAt: 976123498763,
+// });
+
+database
+  .ref('expenses')
+  .once('value')
+  .then((snapshot) => {
+    const expenses = [];
+
+    snapshot.forEach((childSnapshot) => {
+      expenses.push({
+        id: childSnapshot.key,
+        ...childSnapshot.val(),
+      });
+    });
+
+    console.log(expenses);
+  });
+
+// database.ref('expenses').on('value', (snapshot) => {
+//     const expenses = [];
+
+//     snapshot.forEach((childSnapshot) => {
+//       expenses.push({
+//         id: childSnapshot.key,
+//         ...childSnapshot.val()
+//       });
+//     });
+
+//     console.log(expenses);
+//   });
 
 //database.ref('notes/-MORto9lO8_zfuommLur').remove();
 

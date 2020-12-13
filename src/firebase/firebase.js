@@ -16,16 +16,49 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
-database.ref().on(
-  'value',
-  (snapshot) => {
-    const val = snapshot.val();
-    console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
-  },
-  (e) => {
-    console.log('error while fetching', e);
-  }
-);
+database.ref('expenses').push({
+  description: 'Rent',
+  note: '',
+  amount: 109500,
+  createdAt: 976123498763,
+});
+
+//database.ref('notes/-MORto9lO8_zfuommLur').remove();
+
+// database.ref('notes').push({
+//   title: 'to do2',
+//   body: 'test2',
+// });
+
+// const firebaseNotes = {
+//   notes: {
+//     test: {
+//       title: 'test',
+//       body: 'test',
+//     },
+//     test2: {
+//       title: 'test',
+//       body: 'test',
+//     },
+//   },
+// };
+
+// const notes = [
+//   { id: '123,', title: 'asd', body: 'my note' },
+//   { id: '123,', title: 'asd', body: 'my note' },
+// ];
+
+// database.ref('notes').set(notes);
+// database.ref().on(
+//   'value',
+//   (snapshot) => {
+//     const val = snapshot.val();
+//     console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
+//   },
+//   (e) => {
+//     console.log('error while fetching', e);
+//   }
+// );
 
 // database
 //   .ref()

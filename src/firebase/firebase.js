@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/auth';
 
 var firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -13,8 +14,9 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, database as default };
+export { firebase, googleAuthProvider, database as default };
 // database.ref('expenses').push({
 //   description: 'Rent',
 //   note: '',
